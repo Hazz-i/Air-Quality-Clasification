@@ -271,7 +271,7 @@ Visualisasi Boxplot:
      tidak sebagai outlier.
    - Titik-titik di luar whisker menunjukkan adanya outlier.
 
-![outliers_boxplot](https://github.com/Hazz-i/Air-Quality-Clasification/assets/outliers.png)
+![outliers_boxplot](assets/outliers.png)
 
 ###### Gambar 6.1 Visualisasi outliers menggunakan boxplot
 
@@ -298,7 +298,7 @@ dapat memberikan wawasan yang berguna untuk pemilihan fitur, pemodelan, atau ana
 Dengan menggunakan correlation matrix dan visualisasi heatmap, kita dapat dengan mudah menganalisa
 keterkaitan antara fitur numerik dan fitur target dalam dataset secara visual dan kuantitatif.
 
-![correlation_matrix](https://github.com/nikofebrianur/Machine-Learning-Terapan/assets/heatmap.png)
+![correlation_matrix](assets/heatmap.png)
 
 ###### Gambar 6.3 Matriks korelasi PremiumPrice
 
