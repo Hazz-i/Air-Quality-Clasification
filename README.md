@@ -178,16 +178,16 @@ Berikut adalah penjelasan yang lebih rinci mengenai solusi yang diberikan:
 
 3.  Evaluasi Model Untuk mengevaluasi kinerja model, beberapa metrik evaluasi digunakan:
 
-Akurasi, Precision, Recall, dan F1-Score (untuk model klasifikasi): Jika model dipakai untuk
-klasifikasi, seperti untuk mengklasifikasikan kelompok risiko tinggi atau rendah, metrik ini akan
-digunakan untuk mengukur kinerja model dalam hal:
+    Akurasi, Precision, Recall, dan F1-Score (untuk model klasifikasi): Jika model dipakai untuk
+    klasifikasi, seperti untuk mengklasifikasikan kelompok risiko tinggi atau rendah, metrik ini
+    akan digunakan untuk mengukur kinerja model dalam hal:
 
     - Akurasi: Seberapa sering prediksi model benar. Precision: Berapa banyak prediksi positif yang
-    benar.
+      benar.
     - Recall: Seberapa banyak data positif yang dapat diprediksi dengan benar. F1-Score: Harmonik
     - rata-rata precision dan recall, digunakan ketika ada ketidakseimbangan antara kelas. Melalui
-    - evaluasi dengan metrik ini, kita dapat menilai seberapa efektif dan akurat model dalam memprediksi
-    tingkat qualitas udara pada lingkungan dengan tepat.
+    - evaluasi dengan metrik ini, kita dapat menilai seberapa efektif dan akurat model dalam
+      memprediksi tingkat qualitas udara pada lingkungan dengan tepat.
 
 ## Data Understanding
 
@@ -236,8 +236,261 @@ Berikut informasi pada dataset :
 - Melakukan tahapan EDA seperti mendeskripsikan variabel, mencari *outlier*s, Univariate hingga
   Multi-variate analysis.
 - Untuk menganalisa *outlier*s bisa menggunaka boxplot dengan memanggil fungsi .plot() pada pandas
-- Mengecek data missing value dan membersihkan data missing value dengan membuat simple logic
-  program
-- Menggunakan histogram untuk melihat penyebaran data dengan _library_ pandas fungsi .hist()
-- Mencari keterkaitan antar fitur numerik dan fitur kategori dengan correlation matrix menggunakan
-  fungsi pandas dan visualisasi heatmap dengan seaborn
+- Mengecek data missing value data missing value.
+- Mencari keterkaitan antar fitur dan target dengan correlation matrix menggunakan visualisasi
+  heatmap.
+
+### Visualisasi proses Data Understanding
+
+Untuk mengatasi outlier, salah satu metode yang umum digunakan adalah metode IQR (Interquartile
+Range) dengan visualisasi menggunakan boxplot. Berikut penjelasan mengenai metode IQR dan
+visualisasi boxplot:
+
+Metode IQR:
+
+1. Konsep: IQR merupakan ukuran statistik yang menggambarkan rentang atau sebaran data pada bagian
+   tengah distribusi data. IQR dihitung dengan mengurangi nilai kuartil ketiga (Q3) dengan nilai
+   kuartil pertama (Q1). Outlier dianggap sebagai nilai yang terletak di luar rentang IQR yang
+   ditentukan.
+2. Cara Kerja:
+   - Hitung Q1 (kuartil pertama) dan Q3 (kuartil ketiga) dari data.
+   - Hitung IQR dengan mengurangi Q1 dari Q3.
+   - Tentukan batas atas dan batas bawah untuk outlier dengan menggunakan rumus: batas atas = Q3 +
+     (1.5 _ IQR), batas bawah = Q1 - (1.5 _ IQR).
+   - Data yang berada di luar batas atas dan batas bawah tersebut dianggap sebagai outlier.
+
+Visualisasi Boxplot:
+
+1. Konsep: Boxplot adalah visualisasi grafis yang digunakan untuk menganalisis distribusi data dan
+   mengidentifikasi adanya outlier. Boxplot menampilkan beberapa ukuran statistik, termasuk Q1, Q3,
+   median, serta batas atas dan batas bawah untuk outlier.
+2. Cara Kerja:
+   - Boxplot terdiri dari sebuah kotak (box) yang menunjukkan rentang IQR (dari Q1 hingga Q3).
+   - Garis di dalam kotak menunjukkan posisi median.
+   - Whisker atau garis lurus yang terhubung dengan kotak menunjukkan rentang data yang dianggap
+     tidak sebagai outlier.
+   - Titik-titik di luar whisker menunjukkan adanya outlier.
+
+![outliers_boxplot](https://github.com/Hazz-i/Air-Quality-Clasification/assets/outliers.png)
+
+###### Gambar 6.1 Visualisasi outliers menggunakan boxplot
+
+Dengan menggunakan metode IQR dan visualisasi boxplot, kita dapat mengidentifikasi dan mengatasi
+outlier dalam data. Outlier dapat menjadi nilai yang ekstrem dan tidak biasa yang dapat mempengaruhi
+hasil analisis statistik dan model prediksi.
+
+Dengan memperhatikan IQR dan melihat visualisasi boxplot, kita dapat menentukan batas atas dan batas
+bawah untuk outlier, serta mengambil tindakan yang tepat, seperti menghapus atau mengelola outlier
+tersebut, agar tidak mempengaruhi hasil analisis secara signifikan.
+
+Kemudian, untuk menganalisa keterkaitan antara fitur numerik dan fitur target, kita dapat
+menggunakan heatmap.
+
+Heatmap menunjukkan tingkat korelasi antara setiap pasangan fitur numerik dan fitur target. Warna
+dalam heatmap mencerminkan tingkat korelasi, di mana warna lebih terang menunjukkan korelasi yang
+lebih kuat, sedangkan warna lebih gelap menunjukkan korelasi yang lebih lemah atau tidak ada
+korelasi.
+
+Kita dapat melihat hubungan positif atau negatif antara fitur numerik dan fitur target berdasarkan
+nilai korelasi. Analisis ini membantu dalam memahami keterkaitan antar fitur-fitur dalam dataset dan
+dapat memberikan wawasan yang berguna untuk pemilihan fitur, pemodelan, atau analisis lebih lanjut.
+
+Dengan menggunakan correlation matrix dan visualisasi heatmap, kita dapat dengan mudah menganalisa
+keterkaitan antara fitur numerik dan fitur target dalam dataset secara visual dan kuantitatif.
+
+![correlation_matrix](https://github.com/nikofebrianur/Machine-Learning-Terapan/assets/heatmap.png)
+
+###### Gambar 6.3 Matriks korelasi PremiumPrice
+
+Dapat dilihat dari gambar matriks di atas bahwa variabel _Proximity to Industrial Areas_ , dan
+_PM2.5_ merupakan variable yang tidak memilki korelasi dan memilki korelasi terendah dengan fitur
+target _air quality_
+
+## Data Preparation
+
+Berikut ada teknik yang digunakan dalam proses data preparation, yaitu:
+
+1. Pembagian Dataset:
+
+- Data Train dan Data Test Dataset dibagi menjadi dua bagian utama: data training dan data testing
+  menggunakan library sklearn.
+- Rasio pembagian yang digunakan adalah 80:20, di mana:
+  - 80% data digunakan untuk melatih model (training).
+  - 20% data digunakan untuk menguji performa model (testing). Proses ini bertujuan untuk
+    menghindari overfitting dan memastikan model dapat generalize dengan baik pada data baru yang
+    belum pernah dilihat sebelumnya.
+
+2. Standarisasi Data Numerik Standarisasi
+
+- dilakukan dengan menggunakan StandardScaler dari library sklearn.
+- Tujuan dari standarisasi adalah untuk mengurangi bias pada fitur numerik dengan menyelaraskan data
+  ke skala yang seragam:
+  - Rata-rata (mean): 0.
+  - Simpangan baku (standard deviation): 1.
+- Standarisasi sangat penting terutama jika dataset memiliki fitur numerik dengan rentang nilai yang
+  berbeda-beda, yang dapat memengaruhi performa model.
+
+Pentingnya melakukan data preparation:
+
+1. Mengurangi Bias: Standarisasi membantu memastikan fitur numerik tidak mendominasi perhitungan
+   model. Meningkatkan Akurasi:
+2. Pembagian dataset memastikan performa model diuji pada data baru sehingga hasil evaluasi lebih
+   relevan.
+
+## Modeling
+
+Dalam proses modeling, proyek ini akan menggunakan algoritma _RandomForestClassifier_, _KNN_, dan
+_XGBoost_
+
+Dalam proyek ini, algoritma RandomForestClassifier, K-Nearest Neighbors (KNN), dan XGBoost digunakan
+untuk memprediksi klasifikasi qualitas udara. Berikut adalah penjelasan konsep dan cara kerja
+masing-masing algoritma:
+
+1. _RandomForestClassifier_
+
+- Konsep: Random Forest adalah metode pembelajaran ansambel yang menggabungkan beberapa pohon
+  keputusan (decision trees) untuk membuat prediksi yang lebih akurat dan stabil. Algoritma ini
+  bekerja dengan membangun banyak pohon keputusan pada subset data training dan kemudian
+  menggabungkan hasilnya (melalui voting untuk klasifikasi) untuk meningkatkan akurasi.
+- Cara Kerja: Dataset diacak secara acak untuk membangun setiap pohon keputusan (bootstrap
+  sampling). Setiap pohon hanya menggunakan subset dari fitur yang tersedia, sehingga meningkatkan
+  kemampuan model untuk menghindari overfitting. Prediksi akhir ditentukan berdasarkan mayoritas
+  (majority voting) dari pohon-pohon yang ada.
+
+2. _K-Nearest Neighbors (KNN)_
+
+- Konsep: KNN adalah algoritma sederhana berbasis kedekatan (distance-based algorithm) yang
+  memprediksi nilai atau kelas target berdasarkan kedekatan dengan data poin lainnya. Tidak
+  memerlukan pelatihan eksplisit, karena prediksi dilakukan berdasarkan data training secara
+  langsung.
+- Cara Kerja: Algoritma menghitung jarak antara data baru dan semua data dalam dataset (biasanya
+  menggunakan Euclidean distance). Data baru diklasifikasikan berdasarkan mayoritas kelas dari k
+  tetangga terdekat (k nearest neighbors). Nilai k adalah parameter penting yang menentukan jumlah
+  tetangga yang digunakan dalam prediksi.
+
+3. _XGBoost_
+
+- Konsep: XGBoost (Extreme Gradient Boosting) adalah algoritma ansambel berbasis pohon keputusan
+  yang menggunakan teknik boosting. Boosting adalah proses di mana model berturut-turut dilatih
+  untuk memperbaiki kesalahan dari model sebelumnya.
+- Cara Kerja: Model dibangun secara bertahap, di mana setiap model baru meminimalkan kesalahan
+  residu dari model sebelumnya. Algoritma menggunakan pendekatan gradient descent untuk
+  mengoptimalkan fungsi kerugian. Dilengkapi dengan fitur seperti regularization untuk mencegah
+  overfitting dan pengelolaan data yang efisien.
+
+Dengan menggunakan konsep dan cara kerja yang telah dijelaskan, algoritma _RandomForestClassifier_,
+_KNN_, dan _XGBoost_ dapat menghasilkan prediksi kualitas udara yang cukup akurat dan tahan terhadap
+pencilan (outliers) dalam data.
+
+### Tahapan yang dilakukan
+
+Berikut adalah urutan tahapan yang dilakukan dalam proses modeling:
+
+- Melatih model dengan data training dengan menggunakan algoritma _RandomForestClassifier_, _KNN_,
+  dan _XGBoost_
+- Melakukan pengujian dengan data training
+- Melakukan pengujian dengan data testing
+- Melihat hasil performa model antara hasil data training dan data testing
+
+- _RandomForestClassifier_\_ _accuracy_: memiliki akurasi mencapai 0.95 dengan hasil ini menunjukkan
+  bahwa model memiliki tingkat akurasi yang cukup tinggi karena mendekati 1.
+- _KNN_\_ _accuracy_: memiliki akurasi mencapai 0.93 dengan hasil ini menunjukkan bahwa model
+  memiliki tingkat akurasi yang cukup tinggi karena mendekati 1.
+- _XGBoost_\_ _accuracy_: memiliki akurasi mencapai 0.94 dengan hasil ini menunjukkan bahwa model
+  memiliki tingkat akurasi yang cukup tinggi karena mendekati 1.
+
+Kesimpulan yang dapat diambil dari paparan di atas ialah secara keseluruhan, hasil ini menunjukkan
+bahwa semua model mampu mempelajari pola pada data secara maksmal sehingga memiliki tingkat akurasi
+yang cukup tinggi pada semua model yang dipakai.
+
+### Kelebihan dan Kekurangan
+
+1. _RandomForestClassifier_
+
+- Kelebihan:
+  - Efektif untuk data dengan fitur yang banyak atau bersifat non-linear.
+  - Robust terhadap data yang memiliki pencilan (outliers).
+  - Dapat menangani data dengan fitur numerik dan kategorikal.
+- Kekurangan:
+  - Memerlukan sumber daya komputasi tinggi (waktu dan memori) saat melatih model pada dataset
+    besar.
+  - Model sulit diinterpretasikan karena merupakan gabungan dari banyak pohon keputusan.
+  - Tidak cocok untuk dataset dengan fitur kategorikal jika jumlah kategori sangat besar.
+
+2. _K-Nearest Neighbors (KNN)_
+
+- Kelebihan:
+  - Mudah diimplementasikan dan intuitif.
+  - Cocok untuk dataset kecil dengan pola yang sederhana.
+  - Tidak membuat asumsi tentang distribusi data.
+- Kekurangan:
+  - Sensitif terhadap fitur yang tidak di-scale, sehingga memerlukan proses normalisasi.
+  - Memiliki kinerja buruk pada dataset dengan dimensi tinggi (curse of dimensionality).
+  - Kecepatan prediksi menjadi lambat jika ukuran dataset sangat besar, karena harus menghitung
+    jarak untuk setiap data baru.
+
+3. _XGBoost_
+
+- Kelebihan:
+  - Sangat cepat dan efisien dalam menangani dataset besar.
+  - Memiliki kemampuan untuk menangani data yang tidak seimbang dan fitur yang berinteraksi.
+  - Fleksibel dalam memodelkan hubungan non-linear antara fitur dan target.
+- Kekurangan
+  - Memerlukan proses tuning parameter yang kompleks untuk mencapai performa optimal. Tidak
+    seefektif
+  - Random Forest dalam menangani data yang hilang. Lebih sulit dipahami dan diinterpretasikan
+  - dibandingkan algoritma sederhana seperti KNN.
+
+Berdasarkan pertimbangan kelebihan dan kekurangan di atas, maka algoritma yang sesuai dengan jumlah
+dataset dan memiliki akurasi yang tinggi daripada yang lain adalah algorima RandomForestClassifier.
+
+## Evaluation
+
+Metrik yang Digunakan Dalam project ini:
+
+- Accuracy: Mengukur proporsi prediksi yang benar terhadap keseluruhan data. Kelebihan: Sederhana
+  dan intuitif. Kekurangan: Tidak cukup informatif untuk dataset yang tidak seimbang.
+
+  Berikut adalah cara mengukur presentase _accuracy_:
+
+  - Menghitung jumlah prediksi yang benar (positif atau negatif) dibandingkan dengan total data.
+  - **Contoh**: Jika dari 100 data, model memprediksi 95 dengan benar, maka: Accuracy = 95 / 100 =
+    0.95 (95%)
+
+- Precision: Mengukur proporsi prediksi positif yang benar terhadap semua prediksi positif. Fokus
+  pada ketepatan model dalam memprediksi kelas tertentu. Penting dalam kasus di mana biaya kesalahan
+  positif tinggi.
+
+  Berikut adalah cara mengukur presentase _precision_:
+
+  - Precision fokus pada seberapa akurat prediksi positif model.
+  - **Contoh**: Jika model memprediksi 50 data sebagai positif, dan 45 di antaranya benar, maka:
+    Precision = 45 / (45 + 5) = 0.9 (90%)
+
+- Recall: Mengukur proporsi prediksi positif yang benar terhadap semua data aktual positif. Fokus
+  pada kemampuan model untuk menangkap semua contoh positif.
+
+  Berikut adalah cara mengukur presentase _recall_:
+
+  - Fokus pada kemampuan model mendeteksi semua data positif yang ada.
+  - **Contoh**: Jika dari 50 data aktual positif, model memprediksi 45 dengan benar, maka: Recall =
+    45 / (45 + 5) = 0.9 (90%)
+
+- F1-Score: Harmonis rata-rata dari precision dan recall. Berguna saat ada ketidakseimbangan antara
+  precision dan recall.
+
+  Berikut adalah cara mengukur presentase _F1-Score_:
+
+  - Digunakan untuk menjaga keseimbangan antara precision dan recall.
+  - **Contoh**: Jika precision = 0.9 dan recall = 0.8, maka: F1-Score = 2 _ (0.9 _ 0.8) / (0.9 +
+    0.8) = 0.85 (85%)
+
+- Support: Jumlah sampel aktual di setiap kelas.
+
+Berdasarkan hasil evaluasi:
+
+Random Forest Classifier adalah algoritma terbaik dalam kasus ini karena memiliki akurasi tertinggi
+(0.95) dan keseimbangan metrik lainnya (precision, recall, dan F1-score) pada mayoritas kelas. KNN
+memiliki akurasi sedikit lebih rendah (0.93) dan lebih rentan terhadap kelas minoritas, tetapi tetap
+layak digunakan untuk kasus sederhana. XGBoost memberikan hasil mendekati Random Forest (0.94),
+dengan kinerja yang konsisten pada kelas mayoritas, namun sedikit lebih lemah pada kelas minoritas.
