@@ -1,11 +1,23 @@
-## Air Quality Classifications
+## Laporan Proyek Mechine Learning - Wahid Hasim Santoso
 
 ## Domain Proyek
 
-Domain proyek "Air Quality and Pollution Assessment" adalah lingkungan dan kesehatan masyarakat.
-Proyek ini bertujuan untuk menganalisis dan memprediksi tingkat kualitas udara berdasarkan
-parameter-parameter polusi dan lingkungan, seperti suhu, kelembaban, partikel PM2.5, PM10, dan gas
-berbahaya (NO2, SO2, CO).
+Polusi udara menjadi salah satu penyebab utama kematian di dunia. Data dari WHO menunjukkan bahwa
+polusi udara bertanggung jawab atas jutaan kematian setiap tahunnya, serta berbagai penyakit
+pernapasan dan jantung yang mengancam nyawa. Dalam beberapa tahun terakhir, kualitas udara semakin
+memburuk, terutama di kawasan perkotaan yang padat.
+
+Peningkatan polusi udara menjadi masalah besar di banyak daerah perkotaan. Aktivitas manusia seperti
+transportasi, industri, dan pembangunan kota semakin memperburuk kualitas udara, dengan tingkat
+polusi yang sering melebihi ambang batas yang ditetapkan oleh organisasi kesehatan dunia. Namun,
+banyak daerah yang masih mengalami kesulitan dalam memantau polusi udara secara akurat dan
+real-time.
+
+Selain itu, minimnya kesadaran masyarakat mengenai dampak polusi udara terhadap kesehatan menjadi
+tantangan besar. Banyak yang tidak menyadari betapa seriusnya risiko yang ditimbulkan, dan
+langkah-langkah preventif sering kali diabaikan. Di sisi lain, tanpa adanya data yang cukup,
+perencanaan kebijakan untuk mengatasi polusi udara juga menjadi sangat sulit dilakukan oleh
+pemerintah dan organisasi lingkungan.
 
 Dalam konteks ini, proyek ini sangat relevan untuk pemerintah, organisasi lingkungan, dan masyarakat
 umum, karena kualitas udara yang buruk memiliki dampak signifikan pada kesehatan manusia dan
@@ -69,6 +81,24 @@ Keunggulan Proyek:
 4. Peningkatan Kesadaran Publik: Dengan menyediakan informasi kualitas udara yang mudah diakses,
    proyek ini membantu meningkatkan kesadaran masyarakat tentang pentingnya lingkungan yang bersih
    dan sehat.
+
+Goals
+
+1. Meningkatkan Kualitas Udara: Memberikan klasifikasi yang akurat tentang kondisi kualitas udara di
+   berbagai area, sehingga langkah-langkah pencegahan dan pengendalian polusi dapat diambil secara
+   tepat waktu.
+
+2. Mendukung Pengambilan Keputusan yang Berdasarkan Data: Membantu pemerintah dan organisasi
+   lingkungan untuk membuat kebijakan dan program yang lebih efektif dengan menggunakan data
+   klasifikasi yang mendalam dan relevan.
+
+3. Memfasilitasi Akses Informasi Lingkungan: Menyediakan informasi tentang kualitas udara yang mudah
+   diakses oleh masyarakat, meningkatkan kesadaran publik, dan mendorong tindakan preventif terhadap
+   polusi udara.
+
+4. Mengoptimalkan Pengelolaan Sumber Daya Lingkungan: Meningkatkan efisiensi alokasi sumber daya
+   untuk program pengendalian polusi udara dengan menggunakan model prediktif yang dapat
+   mengidentifikasi area dengan polusi tinggi secara akurat.
 
 ## Potensi Implementasi
 
@@ -310,7 +340,25 @@ target _air quality_
 
 Berikut ada teknik yang digunakan dalam proses data preparation, yaitu:
 
-1. Pembagian Dataset:
+1. Transformasi Data
+
+- Dengan menggunakan LabelEncoder dari library skleran.
+- Tujuannya adalah untuk mengubah data kategori menjadi numerik:
+  - ['Good' 'Hazardous' 'Moderate' 'Poor'] menjadi [2 0 1 3]
+- Transformasi data sangat direkomendasikan karena untuk
+
+2. Membersihkan outliers
+
+- Membuang semua outlier yang ada dengan membuang data yang memiliki outlier.
+- Tujuannya adalah untuk mengurangi bias yang ada pada data.
+
+3. Mengurangi feature yang tidak memiliki pengaruh besar kepada target
+
+- Membuang kolom "Proximity_to_Industrial_Areas" dan "PM2.5"
+- Tujuanya adalah untuk membuat analisis lebih efisien, karena kedua feature tersebut merupakan
+  feature yang memilki korelasi paling rendah dengan target
+
+4. Pembagian Dataset:
 
 - Data Train dan Data Test Dataset dibagi menjadi dua bagian utama: data training dan data testing
   menggunakan library sklearn.
@@ -320,7 +368,7 @@ Berikut ada teknik yang digunakan dalam proses data preparation, yaitu:
     menghindari overfitting dan memastikan model dapat generalize dengan baik pada data baru yang
     belum pernah dilihat sebelumnya.
 
-2. Standarisasi Data Numerik Standarisasi
+5. Standarisasi Data Numerik Standarisasi
 
 - dilakukan dengan menggunakan StandardScaler dari library sklearn.
 - Tujuan dari standarisasi adalah untuk mengurangi bias pada fitur numerik dengan menyelaraskan data
@@ -332,12 +380,15 @@ Berikut ada teknik yang digunakan dalam proses data preparation, yaitu:
 
 Pentingnya melakukan data preparation:
 
-1. Mengurangi Bias: Standarisasi membantu memastikan fitur numerik tidak mendominasi perhitungan
+1. Mempermudah proses alaytc dengan mengubah variabel kategori menjadi numerik.
+2. Mengurangi Bias: Terdapat beberapa algoritma Machine Learning yang sangat sensitif terhadap
+   outliers, hal tersbut akan membuat
+3. Mengurangi Bias: Standarisasi membantu memastikan fitur numerik tidak mendominasi perhitungan
    model. Meningkatkan Akurasi:
-2. Pembagian dataset memastikan performa model diuji pada data baru sehingga hasil evaluasi lebih
+4. Pembagian dataset memastikan performa model diuji pada data baru sehingga hasil evaluasi lebih
    relevan.
 
-## Modeling
+## Model Development
 
 Dalam proses modeling, proyek ini akan menggunakan algoritma _RandomForestClassifier_, _KNN_, dan
 _XGBoost_
@@ -356,6 +407,7 @@ masing-masing algoritma:
   sampling). Setiap pohon hanya menggunakan subset dari fitur yang tersedia, sehingga meningkatkan
   kemampuan model untuk menghindari overfitting. Prediksi akhir ditentukan berdasarkan mayoritas
   (majority voting) dari pohon-pohon yang ada.
+- Dengan paramter n_estimators(jumlah pohon) sebanyak 100 dan default random_state yaitu 42
 
 2. _K-Nearest Neighbors (KNN)_
 
@@ -367,6 +419,7 @@ masing-masing algoritma:
   menggunakan Euclidean distance). Data baru diklasifikasikan berdasarkan mayoritas kelas dari k
   tetangga terdekat (k nearest neighbors). Nilai k adalah parameter penting yang menentukan jumlah
   tetangga yang digunakan dalam prediksi.
+- Dengan parameter n_neighbors sebanyak 5
 
 3. _XGBoost_
 
@@ -377,6 +430,7 @@ masing-masing algoritma:
   residu dari model sebelumnya. Algoritma menggunakan pendekatan gradient descent untuk
   mengoptimalkan fungsi kerugian. Dilengkapi dengan fitur seperti regularization untuk mencegah
   overfitting dan pengelolaan data yang efisien.
+- Dengan parameter default random_state yaitu 42
 
 Dengan menggunakan konsep dan cara kerja yang telah dijelaskan, algoritma _RandomForestClassifier_,
 _KNN_, dan _XGBoost_ dapat menghasilkan prediksi kualitas udara yang cukup akurat dan tahan terhadap
@@ -386,9 +440,12 @@ pencilan (outliers) dalam data.
 
 Berikut adalah urutan tahapan yang dilakukan dalam proses modeling:
 
-- Melatih model dengan data training dengan menggunakan algoritma _RandomForestClassifier_, _KNN_,
-  dan _XGBoost_
-- Melakukan pengujian dengan data training
+- Melatih model dengan data training dengan menggunakan algoritma _RandomForestClassifier_ dengan
+  parameter (n_estimators=100, random_state=42 ) maksudnya adalah membuat model Random Forest dengan
+  100 pohon keputusan dan mengatur random_state untuk hasil yang dapat direproduksi.
+- Melatih model dengan data training dengan menggunakan algoritma _KNN_ dengan parameter
+  (n*estimators=100, random_state=42 ) maksudnya adalah membuat model Random Forest dengan 100 pohon
+  keputusan dan mengatur random_state untuk hasil yang dapat direproduksi. dan \_XGBoost*
 - Melakukan pengujian dengan data testing
 - Melihat hasil performa model antara hasil data training dan data testing
 
@@ -441,56 +498,129 @@ yang cukup tinggi pada semua model yang dipakai.
   - Random Forest dalam menangani data yang hilang. Lebih sulit dipahami dan diinterpretasikan
   - dibandingkan algoritma sederhana seperti KNN.
 
-Berdasarkan pertimbangan kelebihan dan kekurangan di atas, maka algoritma yang sesuai dengan jumlah
-dataset dan memiliki akurasi yang tinggi daripada yang lain adalah algorima RandomForestClassifier.
-
 ## Evaluation
 
 Metrik yang Digunakan Dalam project ini:
 
-- Accuracy: Mengukur proporsi prediksi yang benar terhadap keseluruhan data. Kelebihan: Sederhana
-  dan intuitif. Kekurangan: Tidak cukup informatif untuk dataset yang tidak seimbang.
+Proyek ini menggunakan beberapa metrik evaluasi untuk mengukur kinerja model dalam memprediksi
+kualitas udara. Berikut adalah penjelasan masing-masing metrik serta evaluasi terhadap tiga model
+yang diuji: Random Forest Classifier, KNN, dan XGBoost.
 
-  Berikut adalah cara mengukur presentase _accuracy_:
+### Metrik Evaluasi yang Digunakan
 
-  - Menghitung jumlah prediksi yang benar (positif atau negatif) dibandingkan dengan total data.
-  - **Contoh**: Jika dari 100 data, model memprediksi 95 dengan benar, maka: Accuracy = 95 / 100 =
-    0.95 (95%)
+1. Accuracy Mengukur proporsi prediksi yang benar terhadap keseluruhan data.
 
-- Precision: Mengukur proporsi prediksi positif yang benar terhadap semua prediksi positif. Fokus
-  pada ketepatan model dalam memprediksi kelas tertentu. Penting dalam kasus di mana biaya kesalahan
-  positif tinggi.
+- Kelebihan: Sederhana dan intuitif.
+- Kekurangan: Tidak cukup informatif untuk dataset dengan distribusi kelas yang tidak seimbang.
 
-  Berikut adalah cara mengukur presentase _precision_:
+2. Precision Mengukur ketepatan prediksi positif terhadap semua prediksi positif.
 
-  - Precision fokus pada seberapa akurat prediksi positif model.
-  - **Contoh**: Jika model memprediksi 50 data sebagai positif, dan 45 di antaranya benar, maka:
-    Precision = 45 / (45 + 5) = 0.9 (90%)
+- Fokus: Seberapa akurat model dalam memprediksi kelas tertentu.
+- Penting: Berguna saat kesalahan positif memiliki dampak besar.
 
-- Recall: Mengukur proporsi prediksi positif yang benar terhadap semua data aktual positif. Fokus
-  pada kemampuan model untuk menangkap semua contoh positif.
+3. Recall Mengukur kemampuan model untuk menangkap semua contoh aktual positif.
 
-  Berikut adalah cara mengukur presentase _recall_:
+- Fokus: Kemampuan model mendeteksi semua data positif.
+- Penting: Berguna untuk mengurangi risiko mengabaikan prediksi positif penting.
 
-  - Fokus pada kemampuan model mendeteksi semua data positif yang ada.
-  - **Contoh**: Jika dari 50 data aktual positif, model memprediksi 45 dengan benar, maka: Recall =
-    45 / (45 + 5) = 0.9 (90%)
+4. F1-Score Rata-rata harmonis dari precision dan recall.
 
-- F1-Score: Harmonis rata-rata dari precision dan recall. Berguna saat ada ketidakseimbangan antara
-  precision dan recall.
+- Fokus: Memberikan keseimbangan antara precision dan recall.
+- Penting: Berguna dalam kasus di mana precision dan recall tidak seimbang.
 
-  Berikut adalah cara mengukur presentase _F1-Score_:
+5. Support Jumlah sampel aktual di setiap kelas.
 
-  - Digunakan untuk menjaga keseimbangan antara precision dan recall.
-  - **Contoh**: Jika precision = 0.9 dan recall = 0.8, maka: F1-Score = 2 _ (0.9 _ 0.8) / (0.9 +
-    0.8) = 0.85 (85%)
+### Berdasarkan hasil evaluasi:
 
-- Support: Jumlah sampel aktual di setiap kelas.
+1. Random Forest Classifier
 
-Berdasarkan hasil evaluasi:
+- Accuracy: 0.95
+- Classification Report:
 
-Random Forest Classifier adalah algoritma terbaik dalam kasus ini karena memiliki akurasi tertinggi
-(0.95) dan keseimbangan metrik lainnya (precision, recall, dan F1-score) pada mayoritas kelas. KNN
-memiliki akurasi sedikit lebih rendah (0.93) dan lebih rentan terhadap kelas minoritas, tetapi tetap
-layak digunakan untuk kasus sederhana. XGBoost memberikan hasil mendekati Random Forest (0.94),
-dengan kinerja yang konsisten pada kelas mayoritas, namun sedikit lebih lemah pada kelas minoritas.
+```bash
+               precision    recall  f1-score   support
+           0       0.99      1.00      0.99       419
+           1       0.84      0.55      0.67        38
+           2       0.95      0.96      0.96       275
+           3       0.84      0.90      0.87       150
+
+    accuracy                           0.95       882
+   macro avg       0.91      0.85      0.87       882
+weighted avg       0.95      0.95      0.95       882
+```
+
+2. K-Nearest Neighbors (KNN)
+
+- Accuracy: 0.93
+- Classification Report:
+
+```bash
+               precision    recall  f1-score   support
+           0       0.97      1.00      0.98       419
+           1       0.77      0.53      0.62        38
+           2       0.92      0.93      0.93       275
+           3       0.84      0.81      0.83       150
+
+    accuracy                           0.93       882
+   macro avg       0.88      0.82      0.84       882
+weighted avg       0.92      0.93      0.92       882
+```
+
+3. XGBoost
+
+- Accuracy: 0.94
+- Classification Report:
+
+```bash
+               precision    recall  f1-score   support
+           0       0.99      0.99      0.99       419
+           1       0.68      0.55      0.61        38
+           2       0.94      0.96      0.95       275
+           3       0.84      0.84      0.84       150
+
+    accuracy                           0.94       882
+   macro avg       0.86      0.84      0.85       882
+weighted avg       0.94      0.94      0.94       882
+```
+
+### Analisis Hasil Evaluasi
+
+1. Random Forest Classifier
+
+- Memiliki performa terbaik dengan akurasi 0.95 dan keseimbangan precision, recall, serta F1-score
+  yang baik di semua kelas.
+- Sangat cocok untuk digunakan pada skenario dengan distribusi kelas yang bervariasi.
+
+2. KNN
+
+- Performa baik dengan akurasi 0.93, namun kurang efektif dalam menangani kelas minoritas seperti
+  kelas 1.
+- Lebih cocok untuk dataset yang tidak terlalu kompleks.
+
+3. XGBoost
+
+- Memberikan hasil mendekati Random Forest dengan akurasi 0.94.
+- Kinerja pada kelas minoritas sedikit lebih rendah dibandingkan Random Forest.
+
+### Relevansi dengan Business Understanding
+
+1. Apakah model menjawab problem statement? Ya, model prediktif yang dihasilkan berhasil memprediksi
+   kualitas udara dengan akurasi tinggi. Random Forest memiliki performa terbaik untuk mendukung
+   kebutuhan organisasi berbasis data.
+
+2. Apakah solusi mencapai goals yang diharapkan? Ya, hasil prediksi memberikan wawasan mendalam
+   tentang pola polusi udara, sehingga membantu organisasi membuat kebijakan berbasis data dan
+   memberikan peringatan dini kepada masyarakat.
+
+3. Apakah solusi memberikan dampak?
+
+- Bagi Pemerintah dan Organisasi Lingkungan: Meningkatkan efisiensi dalam pengelolaan sumber daya
+  dan pengambilan keputusan berbasis data.
+- Bagi Masyarakat: Memberikan informasi kualitas udara secara real-time, meningkatkan kesadaran, dan
+  mendorong langkah-langkah pencegahan.
+
+### Kesimpulan
+
+Random Forest Classifier dipilih sebagai model terbaik untuk proyek ini karena memiliki akurasi
+tinggi dan kinerja yang seimbang di semua metrik evaluasi. Model ini secara efektif mendukung tujuan
+bisnis dan memberikan solusi yang relevan terhadap problem statement.
