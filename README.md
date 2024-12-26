@@ -51,69 +51,7 @@ Manfaat bagi Masyarakat:
 
 ## Business Understanding
 
-Proyek ini dirancang untuk mendukung pemerintah dan organisasi lingkungan dengan karakteristik
-berikut:
-
-1. Organisasi Berbasis Data: Mereka memiliki komitmen untuk memanfaatkan data dalam pengambilan
-   keputusan terkait kebijakan dan program peningkatan kualitas udara.
-
-2. Akses ke Data Lingkungan yang Kaya: Dataset ini mencakup berbagai parameter lingkungan, seperti
-   suhu, kelembaban, dan konsentrasi polutan (PM2.5, PM10, NO2, SO2, CO), yang memungkinkan analisis
-   yang komprehensif.
-
-3. Fokus pada Kesejahteraan Publik: Organisasi ini memiliki misi untuk meningkatkan kualitas udara,
-   melindungi kesehatan masyarakat, dan menciptakan lingkungan yang lebih baik untuk generasi
-   mendatang.
-
-Keunggulan Proyek:
-
-1. Prediksi Kualitas Udara yang Akurat: Model prediktif memungkinkan organisasi untuk
-   mengidentifikasi area dengan risiko polusi tinggi dan memperkirakan kualitas udara berdasarkan
-   parameter lingkungan.
-
-2. Efisiensi dalam Pengelolaan Sumber Daya: Dengan memanfaatkan data prediksi, organisasi dapat
-   mengalokasikan sumber daya untuk program pengendalian polusi di area yang paling membutuhkan.
-
-3. Pengambilan Keputusan yang Lebih Informasional: Analisis data mendalam memberikan wawasan tentang
-   pola polusi, sehingga organisasi dapat menyusun strategi jangka panjang untuk meningkatkan
-   kualitas udara.
-
-4. Peningkatan Kesadaran Publik: Dengan menyediakan informasi kualitas udara yang mudah diakses,
-   proyek ini membantu meningkatkan kesadaran masyarakat tentang pentingnya lingkungan yang bersih
-   dan sehat.
-
-Goals
-
-1. Meningkatkan Kualitas Udara: Memberikan klasifikasi yang akurat tentang kondisi kualitas udara di
-   berbagai area, sehingga langkah-langkah pencegahan dan pengendalian polusi dapat diambil secara
-   tepat waktu.
-
-2. Mendukung Pengambilan Keputusan yang Berdasarkan Data: Membantu pemerintah dan organisasi
-   lingkungan untuk membuat kebijakan dan program yang lebih efektif dengan menggunakan data
-   klasifikasi yang mendalam dan relevan.
-
-3. Memfasilitasi Akses Informasi Lingkungan: Menyediakan informasi tentang kualitas udara yang mudah
-   diakses oleh masyarakat, meningkatkan kesadaran publik, dan mendorong tindakan preventif terhadap
-   polusi udara.
-
-4. Mengoptimalkan Pengelolaan Sumber Daya Lingkungan: Meningkatkan efisiensi alokasi sumber daya
-   untuk program pengendalian polusi udara dengan menggunakan model prediktif yang dapat
-   mengidentifikasi area dengan polusi tinggi secara akurat.
-
-## Potensi Implementasi
-
-1. Pemerintah: Membantu dalam membuat kebijakan berbasis data untuk pengendalian polusi dan alokasi
-   sumber daya yang lebih baik.
-2. Organisasi Lingkungan: Mendukung kampanye untuk meningkatkan kesadaran masyarakat tentang dampak
-   polusi udara.
-3. Aplikasi Publik: Data ini dapat digunakan untuk mengembangkan aplikasi yang memberikan peringatan
-   kualitas udara real-time kepada masyarakat.
-
-Dengan memanfaatkan dataset Air Quality and Pollution Assessment, proyek ini bertujuan untuk
-menciptakan solusi yang dapat memberikan dampak positif jangka panjang terhadap lingkungan dan
-kesehatan masyarakat.
-
-## Problem Statements
+### Problem Statements
 
 1. Bagaimana langkah yang dapat diambil untuk meningkatkan akurasi prediksi kualitas udara? Banyak
    kota di dunia menghadapi tantangan dalam memantau dan memperkirakan kualitas udara secara akurat.
@@ -134,40 +72,11 @@ kesehatan masyarakat.
    kualitas udara dengan risiko kesehatan untuk membantu pembuat kebijakan dan masyarakat dalam
    mengambil tindakan preventif yang tepat.
 
-## Goals
+### Goals
 
-1. Mengembangkan model prediktif kualitas udara: Proyek ini bertujuan untuk menciptakan model
-   berbasis machine learning yang dapat memperkirakan kualitas udara dengan akurasi tinggi. Model
-   ini akan memanfaatkan data seperti konsentrasi polutan (PM2.5, PM10, NO2, SO2, O3, dll.), kondisi
-   cuaca, dan data geografis lainnya untuk menghasilkan prediksi yang relevan.
-
-2. Meningkatkan transparansi informasi kualitas udara: Dengan mengidentifikasi parameter utama yang
-   memengaruhi kualitas udara, proyek ini akan menghasilkan visualisasi data yang intuitif dan
-   informatif. Tujuannya adalah membantu masyarakat memahami kondisi kualitas udara di wilayah
-   mereka dengan lebih baik, sehingga dapat mengambil langkah preventif.
-
-3. Mengurangi risiko kesehatan akibat polusi udara: Proyek ini akan menghubungkan data kualitas
-   udara dengan dampaknya terhadap kesehatan masyarakat. Dengan memprediksi periode atau wilayah
-   dengan polusi tinggi, pembuat kebijakan dapat merancang intervensi yang lebih efektif untuk
-   melindungi populasi yang rentan, seperti anak-anak, lansia, dan individu dengan kondisi kesehatan
-   tertentu.
-
-   Evaluasi Keberhasilan Metrik evaluasi yang akan digunakan untuk mengukur keberhasilan proyek
-   adalah:
-
-   - Akurasi prediksi kualitas udara: Menggunakan metrik seperti Mean Absolute Error (MAE) atau Root
-     Mean Squared Error (RMSE) untuk menilai keakuratan model prediktif dalam memperkirakan kualitas
-     udara berdasarkan data historis.
-
-   - Indikator tingkat pemahaman publik: Dilakukan melalui survei atau wawancara untuk menilai
-     apakah masyarakat memahami dan menggunakan informasi yang disajikan terkait kualitas udara.
-
-   - Dampak intervensi terhadap risiko kesehatan: Dengan menganalisis data kesehatan masyarakat
-     sebelum dan sesudah diterapkannya model dan intervensi berbasis data kualitas udara, proyek ini
-     akan mengevaluasi apakah risiko kesehatan akibat polusi udara berkurang.
-
-   - Dengan metrik evaluasi ini, keberhasilan proyek dapat diukur dalam hal peningkatan akurasi
-     prediksi, transparansi informasi, dan mitigasi dampak kesehatan akibat polusi udara.
+1. Mengembangkan model prediktif kualitas udara dengan algoritma Machine Learning.
+2. Melakukan pre-pemrosesan data dengan baik agar dapat digunakan.
+3. Menentukan parameter feature yang memilki dampak besar kepada parameter target (kualitas udara).
 
 ### Solution statements
 
@@ -200,11 +109,6 @@ Berikut adalah penjelasan yang lebih rinci mengenai solusi yang diberikan:
       memprediksi kelas atau nilai dari titik data berdasarkan kedekatannya dengan titik data
       lainnya dalam dataset. Algoritma ini sederhana namun efektif untuk dataset dengan distribusi
       yang jelas.
-
-    - XGBoost: XGBoost adalah algoritma gradient boosting yang sangat populer dalam kompetisi data
-      science karena kemampuannya untuk menangani data besar dengan efisien dan memberikan hasil
-      yang sangat baik dalam tugas regresi dan klasifikasi. Model ini digunakan untuk meningkatkan
-      prediksi dengan fokus pada peningkatan kesalahan model sebelumnya.
 
 3.  Evaluasi Model Untuk mengevaluasi kinerja model, beberapa metrik evaluasi digunakan:
 
@@ -390,11 +294,10 @@ Pentingnya melakukan data preparation:
 
 ## Model Development
 
-Dalam proses modeling, proyek ini akan menggunakan algoritma _RandomForestClassifier_, _KNN_, dan
-_XGBoost_
+Dalam proses modeling, proyek ini akan menggunakan algoritma _RandomForestClassifier_ dan _KNN_
 
-Dalam proyek ini, algoritma RandomForestClassifier, K-Nearest Neighbors (KNN), dan XGBoost digunakan
-untuk memprediksi klasifikasi qualitas udara. Berikut adalah penjelasan konsep dan cara kerja
+Dalam proyek ini, algoritma RandomForestClassifier dan K-Nearest Neighbors (KNN) digunakan untuk
+memprediksi klasifikasi qualitas udara. Berikut adalah penjelasan konsep dan cara kerja
 masing-masing algoritma:
 
 1. _RandomForestClassifier_
@@ -421,20 +324,9 @@ masing-masing algoritma:
   tetangga yang digunakan dalam prediksi.
 - Dengan parameter n_neighbors sebanyak 5
 
-3. _XGBoost_
-
-- Konsep: XGBoost (Extreme Gradient Boosting) adalah algoritma ansambel berbasis pohon keputusan
-  yang menggunakan teknik boosting. Boosting adalah proses di mana model berturut-turut dilatih
-  untuk memperbaiki kesalahan dari model sebelumnya.
-- Cara Kerja: Model dibangun secara bertahap, di mana setiap model baru meminimalkan kesalahan
-  residu dari model sebelumnya. Algoritma menggunakan pendekatan gradient descent untuk
-  mengoptimalkan fungsi kerugian. Dilengkapi dengan fitur seperti regularization untuk mencegah
-  overfitting dan pengelolaan data yang efisien.
-- Dengan parameter default random_state yaitu 42
-
-Dengan menggunakan konsep dan cara kerja yang telah dijelaskan, algoritma _RandomForestClassifier_,
-_KNN_, dan _XGBoost_ dapat menghasilkan prediksi kualitas udara yang cukup akurat dan tahan terhadap
-pencilan (outliers) dalam data.
+Dengan menggunakan konsep dan cara kerja yang telah dijelaskan, algoritma _RandomForestClassifier_
+dan _KNN_ dapat menghasilkan prediksi kualitas udara yang cukup akurat dan tahan terhadap pencilan
+(outliers) dalam data.
 
 ### Tahapan yang dilakukan
 
@@ -443,9 +335,13 @@ Berikut adalah urutan tahapan yang dilakukan dalam proses modeling:
 - Melatih model dengan data training dengan menggunakan algoritma _RandomForestClassifier_ dengan
   parameter (n_estimators=100, random_state=42 ) maksudnya adalah membuat model Random Forest dengan
   100 pohon keputusan dan mengatur random_state untuk hasil yang dapat direproduksi.
-- Melatih model dengan data training dengan menggunakan algoritma _KNN_ dengan parameter
-  (n*estimators=100, random_state=42 ) maksudnya adalah membuat model Random Forest dengan 100 pohon
-  keputusan dan mengatur random_state untuk hasil yang dapat direproduksi. dan \_XGBoost*
+- Melatih model dengan data training menggunakan algoritma K-Nearest Neighbors (KNN) dengan
+  parameter (n_neighbors=5, random_state=42) berarti algoritma akan menggunakan 5 tetangga terdekat
+  untuk menentukan kelas atau nilai prediksi suatu data. Namun, perlu dicatat bahwa parameter
+  random_state tidak relevan dalam KNN, karena algoritma ini tidak melibatkan elemen acak seperti
+  yang ditemukan pada algoritma berbasis pohon keputusan (misalnya, Random Forest atau Decision
+  Tree). Jika random_state disebutkan, kemungkinan hal itu merupakan kesalahan atau parameter
+  tambahan yang tidak berdampak pada KNN.
 - Melakukan pengujian dengan data testing
 - Melihat hasil performa model antara hasil data training dan data testing
 
@@ -453,58 +349,18 @@ Berikut adalah urutan tahapan yang dilakukan dalam proses modeling:
   bahwa model memiliki tingkat akurasi yang cukup tinggi karena mendekati 1.
 - _KNN_\_ _accuracy_: memiliki akurasi mencapai 0.93 dengan hasil ini menunjukkan bahwa model
   memiliki tingkat akurasi yang cukup tinggi karena mendekati 1.
-- _XGBoost_\_ _accuracy_: memiliki akurasi mencapai 0.94 dengan hasil ini menunjukkan bahwa model
-  memiliki tingkat akurasi yang cukup tinggi karena mendekati 1.
 
 Kesimpulan yang dapat diambil dari paparan di atas ialah secara keseluruhan, hasil ini menunjukkan
-bahwa semua model mampu mempelajari pola pada data secara maksmal sehingga memiliki tingkat akurasi
+bahwa semua model mampu mempelajari pola pada data secara maksimal sehingga memiliki tingkat akurasi
 yang cukup tinggi pada semua model yang dipakai.
-
-### Kelebihan dan Kekurangan
-
-1. _RandomForestClassifier_
-
-- Kelebihan:
-  - Efektif untuk data dengan fitur yang banyak atau bersifat non-linear.
-  - Robust terhadap data yang memiliki pencilan (outliers).
-  - Dapat menangani data dengan fitur numerik dan kategorikal.
-- Kekurangan:
-  - Memerlukan sumber daya komputasi tinggi (waktu dan memori) saat melatih model pada dataset
-    besar.
-  - Model sulit diinterpretasikan karena merupakan gabungan dari banyak pohon keputusan.
-  - Tidak cocok untuk dataset dengan fitur kategorikal jika jumlah kategori sangat besar.
-
-2. _K-Nearest Neighbors (KNN)_
-
-- Kelebihan:
-  - Mudah diimplementasikan dan intuitif.
-  - Cocok untuk dataset kecil dengan pola yang sederhana.
-  - Tidak membuat asumsi tentang distribusi data.
-- Kekurangan:
-  - Sensitif terhadap fitur yang tidak di-scale, sehingga memerlukan proses normalisasi.
-  - Memiliki kinerja buruk pada dataset dengan dimensi tinggi (curse of dimensionality).
-  - Kecepatan prediksi menjadi lambat jika ukuran dataset sangat besar, karena harus menghitung
-    jarak untuk setiap data baru.
-
-3. _XGBoost_
-
-- Kelebihan:
-  - Sangat cepat dan efisien dalam menangani dataset besar.
-  - Memiliki kemampuan untuk menangani data yang tidak seimbang dan fitur yang berinteraksi.
-  - Fleksibel dalam memodelkan hubungan non-linear antara fitur dan target.
-- Kekurangan
-  - Memerlukan proses tuning parameter yang kompleks untuk mencapai performa optimal. Tidak
-    seefektif
-  - Random Forest dalam menangani data yang hilang. Lebih sulit dipahami dan diinterpretasikan
-  - dibandingkan algoritma sederhana seperti KNN.
 
 ## Evaluation
 
 Metrik yang Digunakan Dalam project ini:
 
 Proyek ini menggunakan beberapa metrik evaluasi untuk mengukur kinerja model dalam memprediksi
-kualitas udara. Berikut adalah penjelasan masing-masing metrik serta evaluasi terhadap tiga model
-yang diuji: Random Forest Classifier, KNN, dan XGBoost.
+kualitas udara. Berikut adalah penjelasan masing-masing metrik serta evaluasi terhadap dua model
+yang diuji: Random Forest Classifier dan KNN.
 
 ### Metrik Evaluasi yang Digunakan
 
@@ -566,23 +422,6 @@ weighted avg       0.95      0.95      0.95       882
 weighted avg       0.92      0.93      0.92       882
 ```
 
-3. XGBoost
-
-- Accuracy: 0.94
-- Classification Report:
-
-```bash
-               precision    recall  f1-score   support
-           0       0.99      0.99      0.99       419
-           1       0.68      0.55      0.61        38
-           2       0.94      0.96      0.95       275
-           3       0.84      0.84      0.84       150
-
-    accuracy                           0.94       882
-   macro avg       0.86      0.84      0.85       882
-weighted avg       0.94      0.94      0.94       882
-```
-
 ### Analisis Hasil Evaluasi
 
 1. Random Forest Classifier
@@ -596,11 +435,6 @@ weighted avg       0.94      0.94      0.94       882
 - Performa baik dengan akurasi 0.93, namun kurang efektif dalam menangani kelas minoritas seperti
   kelas 1.
 - Lebih cocok untuk dataset yang tidak terlalu kompleks.
-
-3. XGBoost
-
-- Memberikan hasil mendekati Random Forest dengan akurasi 0.94.
-- Kinerja pada kelas minoritas sedikit lebih rendah dibandingkan Random Forest.
 
 ### Relevansi dengan Business Understanding
 
