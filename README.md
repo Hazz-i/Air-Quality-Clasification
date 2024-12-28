@@ -53,24 +53,13 @@ Manfaat bagi Masyarakat:
 
 ### Problem Statements
 
-1. Bagaimana langkah yang dapat diambil untuk meningkatkan akurasi prediksi kualitas udara? Banyak
-   kota di dunia menghadapi tantangan dalam memantau dan memperkirakan kualitas udara secara akurat.
-   Hal ini disebabkan oleh berbagai faktor seperti perubahan iklim, aktivitas industri, dan
-   urbanisasi. Dalam proyek ini, kami akan mengatasi tantangan ini dengan mengembangkan model
-   analisis prediktif berbasis machine learning untuk memprediksi kualitas udara berdasarkan data
-   historis dan pola polusi.
+1. Bagaimana cara mengembangkan model prediktif untuk memprediksi kualitas udara menggunakan
+   algoritma machine learning?
+2. Apa teknik pre-pemrosesan data yang paling efektif untuk memastikan data kualitas udara dapat
+   digunakan dalam model prediktif?
 
-2. Bagaimana caranya untuk meningkatkan transparansi dalam penyajian informasi kualitas udara kepada
-   masyarakat? Informasi kualitas udara seringkali sulit dipahami oleh masyarakat umum. Dalam proyek
-   ini, kami akan mengidentifikasi parameter polusi utama yang memengaruhi kualitas udara dan
-   menyajikan informasi ini dengan cara yang mudah dimengerti. Hal ini bertujuan untuk meningkatkan
-   kesadaran dan pemahaman masyarakat tentang kondisi lingkungan mereka.
-
-3. Bagaimana risiko kesehatan yang terkait dengan polusi udara dapat diidentifikasi dan dikurangi?
-   Polusi udara memiliki dampak signifikan terhadap kesehatan masyarakat, termasuk peningkatan
-   risiko penyakit pernapasan dan kardiovaskular. Dalam proyek ini, kami akan menghubungkan data
-   kualitas udara dengan risiko kesehatan untuk membantu pembuat kebijakan dan masyarakat dalam
-   mengambil tindakan preventif yang tepat.
+3. Bagaimana cara memilih parameter fitur yang relevan dan memiliki pengaruh signifikan terhadap
+   kualitas udara dalam sebuah model prediktif?
 
 ### Goals
 
@@ -336,12 +325,8 @@ Berikut adalah urutan tahapan yang dilakukan dalam proses modeling:
   parameter (n_estimators=100, random_state=42 ) maksudnya adalah membuat model Random Forest dengan
   100 pohon keputusan dan mengatur random_state untuk hasil yang dapat direproduksi.
 - Melatih model dengan data training menggunakan algoritma K-Nearest Neighbors (KNN) dengan
-  parameter (n_neighbors=5, random_state=42) berarti algoritma akan menggunakan 5 tetangga terdekat
-  untuk menentukan kelas atau nilai prediksi suatu data. Namun, perlu dicatat bahwa parameter
-  random_state tidak relevan dalam KNN, karena algoritma ini tidak melibatkan elemen acak seperti
-  yang ditemukan pada algoritma berbasis pohon keputusan (misalnya, Random Forest atau Decision
-  Tree). Jika random_state disebutkan, kemungkinan hal itu merupakan kesalahan atau parameter
-  tambahan yang tidak berdampak pada KNN.
+  parameter (n_neighbors=5) berarti algoritma akan menggunakan 5 tetangga terdekat untuk menentukan
+  kelas atau nilai prediksi suatu data.
 - Melakukan pengujian dengan data testing
 - Melihat hasil performa model antara hasil data training dan data testing
 
@@ -442,9 +427,10 @@ weighted avg       0.92      0.93      0.92       882
    kualitas udara dengan akurasi tinggi. Random Forest memiliki performa terbaik untuk mendukung
    kebutuhan organisasi berbasis data.
 
-2. Apakah solusi mencapai goals yang diharapkan? Ya, hasil prediksi memberikan wawasan mendalam
-   tentang pola polusi udara, sehingga membantu organisasi membuat kebijakan berbasis data dan
-   memberikan peringatan dini kepada masyarakat.
+2. Apakah solusi mencapai goals yang diharapkan? Ya, hasil prediksi memberikan wawasan mengenai
+   faktor apa saja yang memilki keterkaitan tinggi terhadap kualitas udara dengan melihat feature
+   yang dipakai, sehingga membantu organisasi membuat kebijakan berbasis data dan memberikan
+   peringatan dini kepada masyarakat.
 
 3. Apakah solusi memberikan dampak?
 
